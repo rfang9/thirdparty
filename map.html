@@ -19,7 +19,7 @@
     <div id="map"></div>
     <script>
       var trucks = {}; 
-      var markers = []
+      var markers = {};
       var info = {};
       var map;
 
@@ -37,8 +37,7 @@
           var keys = Object.keys(trucks);
           for (var i = 0; i < keys.length; i++) {
               var key = keys[i];
-              console.dir(markers);
-              var marker =  new google.maps.Marker({
+              markers[key] = new google.maps.Marker({
                   position: {
                       lat: trucks[key].Latitude,
                       lng: trucks[key].Longitude
@@ -47,25 +46,30 @@
               });
               
               info[key] = new google.maps.InfoWindow({
-                content: '<div><h1>' + key + '</h1></div>'
+                content: '<div><h3>' + key + '</h3></div>'
               });
 
-              marker.addListener('click', function(event) {
-                  window.top.postMessage({ type: 'CHANGE_ELEMENT', payload: key }, '*');
-              });
+              markers[key].addListener('click', function(innerkey) {
+                  return function() {
+                    window.top.postMessage({ type: 'CHANGE_ELEMENT', payload: innerkey }, '*');
+                  }
+              }(key));
 
-              marker.addListener('mouseover', function(event) {
-                  info[key].open(map, marker);
-              });
+              markers[key].addListener('mouseover', function(innerkey) {
+                  return function() {
+                    info[key].open(map, markers[key]);
+                  }
+              }(key));
 
-              marker.addListener('mouseout', function(event) {
-                  info[key].close();
-              });
-              markers.push(marker);
+              markers[key].addListener('mouseout', function(innerkey) {
+                  return function() {
+                    info[key].close();
+                  }
+              }(key));
           }
         var bounds = new google.maps.LatLngBounds();
-        for (var i = 0; i < markers.length; i++) {
-            bounds.extend(markers[i].getPosition());
+        for (var i = 0; i < keys.length; i++) {
+            bounds.extend(markers[keys[i]].getPosition());
         }
         map.fitBounds(bounds);
       }
