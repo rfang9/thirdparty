@@ -36,30 +36,31 @@
           }
           var keys = Object.keys(trucks);
           for (var i = 0; i < keys.length; i++) {
-              markers[keys[i]] = new google.maps.Marker({
+              var key = keys[i];
+              markers[key] = new google.maps.Marker({
                   position: {
-                      lat: trucks[keys[i]].Latitude,
-                      lng: trucks[keys[i]].Longitude
+                      lat: trucks[key].Latitude,
+                      lng: trucks[key].Longitude
                   },
                   map: map
               });
               
-              info[keys[i]] = new google.maps.InfoWindow({
-                content: '<div><h1>' + keys[i] + '</h1></div>'
+              info[key] = new google.maps.InfoWindow({
+                content: '<div><h1>' + key + '</h1></div>'
               });
 
-              markers[keys[i]].addListener('click', function(event) {
+              markers[key].addListener('click', function(event) {
                   console.log(keys);
-                  window.top.postMessage({ type: 'CHANGE_ELEMENT',payload: keys[i] }, '*');
+                  window.top.postMessage({ type: 'CHANGE_ELEMENT', payload: key }, '*');
               });
 /*
-              markers[keys[i]].addListener('mouseover', function(event) {
+              markers[key].addListener('mouseover', function(event) {
                   console.dir(info)
-                  info[keys[i]].open(map, markers[keys[i]]);
+                  info[key].open(map, markers[key]);
               });
 
-              markers[keys[i]].addListener('mouseout', function(event) {
-                  info[keys[i]].close();
+              markers[key].addListener('mouseout', function(event) {
+                  info[key].close();
               });*/
           }
         var bounds = new google.maps.LatLngBounds();
