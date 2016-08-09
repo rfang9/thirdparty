@@ -28,7 +28,7 @@
           center: {lat: 37.769, lng: -122.446},
           zoom: 8
         });
-
+      }
       window.onmessage = function(event) {
           var data = event.data.data;
           for (var i = 0; i < data.body.length; i++) {
@@ -59,6 +59,7 @@
                       payload: keys[i]
                   });
               });
+
               markers[keys[i]].addListener('mouseover', function(event) {
                   info[keys[i]].open(map, markers[keys[i]]);
               });
@@ -66,9 +67,13 @@
               markers[keys[i]].addListener('mouseout', function(event) {
                   info[keys[i]].close();
               });
-
-
           }
+        var bounds = new google.maps.LatLngBounds();
+        for (var i = 0; i < keys.length; i++) {
+            bounds.extend(markers[keys[i]].getPosition());
+        }
+        map.fitBounds(bounds);
+
 
       }
       
