@@ -22,7 +22,7 @@
       var markers = {};
       var info = {};
       var map;
-/*
+
       window.onmessage = function(event) {
           var data = event.data.data;
           for (var i = 0; i < data.body.length; i++) {
@@ -49,10 +49,7 @@
               });
 
               markers[keys[i]].addListener('click', function(event) {
-                  window.top.postMessage({
-                      type: 'CHANGE_ELEMENT',
-                      payload: keys[i]
-                  });
+                  window.top.postMessage({ type: 'CHANGE_ELEMENT',payload: keys[i] }, '*');
               });
 
               markers[keys[i]].addListener('mouseover', function(event) {
@@ -63,13 +60,13 @@
                   info[keys[i]].close();
               });
           }
-        var bounds = new google.maps.LatLngBounds();
+       /* var bounds = new google.maps.LatLngBounds();
         for (var i = 0; i < keys.length; i++) {
             bounds.extend(markers[keys[i]].getPosition());
         }
-        map.fitBounds(bounds);
+        map.fitBounds(bounds);*/
       }
-*/
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.769, lng: -122.446},
