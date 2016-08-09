@@ -57,13 +57,13 @@
 
               markers[key].addListener('mouseover', function(innerkey) {
                   return function() {
-                    info[key].open(map, markers[key]);
+                    info[innerkey].open(map, markers[innerkey]);
                   }
               }(key));
 
               markers[key].addListener('mouseout', function(innerkey) {
                   return function() {
-                    info[key].close();
+                    info[innerkey].close();
                   }
               }(key));
           }
