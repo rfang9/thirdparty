@@ -66,6 +66,13 @@
                     info[innerkey].close();
                   }
               }(key));
+              
+              markers[key].addListener('mouseup', function(innerkey) {
+                  return function() {
+                    info[innerkey].close();
+                  }
+              }(key));
+
           }
         var bounds = new google.maps.LatLngBounds();
         for (var i = 0; i < keys.length; i++) {
