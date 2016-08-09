@@ -49,11 +49,12 @@
                 content: '<div><h3>' + key + '</h3></div>'
               });
 
-              markers[key].addListener('click', function(innerkey) {
+              markers[key].addListener('click', function(innerkey, innermap, innermarker) {
                   return function() {
                     window.top.postMessage({ type: 'CHANGE_ELEMENT', payload: innerkey }, '*');
+                    innermap.setCenter(innermarker.getPosition());
                   }
-              }(key));
+              }(key, map, marker[key]));
 
               markers[key].addListener('mouseover', function(innerkey) {
                   return function() {
@@ -66,7 +67,7 @@
                     info[innerkey].close();
                   }
               }(key));
-              
+
               markers[key].addListener('mouseup', function(innerkey) {
                   return function() {
                     info[innerkey].close();
@@ -74,11 +75,14 @@
               }(key));
 
           }
-        var bounds = new google.maps.LatLngBounds();
-        for (var i = 0; i < keys.length; i++) {
-            bounds.extend(markers[keys[i]].getPosition());
-        }
-        map.fitBounds(bounds);
+            var bounds = new google.maps.LatLngBounds();
+            for (var i = 0; i < keys.length; i++) {
+                bounds.extend(markers[keys[i]].getPosition());
+            }
+            map.fitBounds(bounds);
+
+            map.setCenter(markers[data.element].getPosition());
+            map.setZoom(8);
       }
 
       function initMap() {
