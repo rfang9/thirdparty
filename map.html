@@ -37,6 +37,7 @@
           var keys = Object.keys(trucks);
           for (var i = 0; i < keys.length; i++) {
               var key = keys[i];
+              console.dir(markers);
               markers[key] = new google.maps.Marker({
                   position: {
                       lat: trucks[key].Latitude,
@@ -50,18 +51,16 @@
               });
 
               markers[key].addListener('click', function(event) {
-                  console.log(keys);
                   window.top.postMessage({ type: 'CHANGE_ELEMENT', payload: key }, '*');
               });
-/*
+
               markers[key].addListener('mouseover', function(event) {
-                  console.dir(info)
                   info[key].open(map, markers[key]);
               });
 
               markers[key].addListener('mouseout', function(event) {
                   info[key].close();
-              });*/
+              });
           }
         var bounds = new google.maps.LatLngBounds();
         for (var i = 0; i < keys.length; i++) {
