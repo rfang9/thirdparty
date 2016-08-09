@@ -19,7 +19,7 @@
     <div id="map"></div>
     <script>
       var trucks = {}; 
-      var markers = {};
+      var markers = []
       var info = {};
       var map;
 
@@ -38,7 +38,7 @@
           for (var i = 0; i < keys.length; i++) {
               var key = keys[i];
               console.dir(markers);
-              markers[key] = new google.maps.Marker({
+              var marker =  new google.maps.Marker({
                   position: {
                       lat: trucks[key].Latitude,
                       lng: trucks[key].Longitude
@@ -50,21 +50,22 @@
                 content: '<div><h1>' + key + '</h1></div>'
               });
 
-              markers[key].addListener('click', function(event) {
+              marker.addListener('click', function(event) {
                   window.top.postMessage({ type: 'CHANGE_ELEMENT', payload: key }, '*');
               });
 
-              markers[key].addListener('mouseover', function(event) {
-                  info[key].open(map, markers[key]);
+              marker.addListener('mouseover', function(event) {
+                  info[key].open(map, marker);
               });
 
-              markers[key].addListener('mouseout', function(event) {
+              marker.addListener('mouseout', function(event) {
                   info[key].close();
               });
+              markers.push(marker);
           }
         var bounds = new google.maps.LatLngBounds();
-        for (var i = 0; i < keys.length; i++) {
-            bounds.extend(markers[keys[i]].getPosition());
+        for (var i = 0; i < markers.length; i++) {
+            bounds.extend(markers[i].getPosition());
         }
         map.fitBounds(bounds);
       }
