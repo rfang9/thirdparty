@@ -53,6 +53,7 @@
               });
 
               markers[keys[i]].addListener('mouseover', function(event) {
+                  console.dir(info)
                   info[keys[i]].open(map, markers[keys[i]]);
               });
 
