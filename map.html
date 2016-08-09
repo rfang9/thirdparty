@@ -18,13 +18,20 @@
   <body>
     <div id="map"></div>
     <script>
+
+      window.onmessage = function(event) {
+        console.dir(event);
+      }
+      
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           zoom: 8
         });
+        window.top.postMessage('test message', '*');
       }
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKIiU0ErtJBfYsjuRP4K6J_C2ridwaDwk&callback=initMap"
     async defer></script>
