@@ -31,17 +31,17 @@
           center: myLatlng,
           zoom: 8
         });
-      }
 
         var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
         });
 
         marker.addListener('click', function() {
             window.top.postMessage(marker.title, '*');
-        })
+        });
+      }
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKIiU0ErtJBfYsjuRP4K6J_C2ridwaDwk&callback=initMap"
