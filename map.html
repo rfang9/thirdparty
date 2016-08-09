@@ -27,10 +27,11 @@
           var data = event.data.data;
           for (var i = 0; i < data.body.length; i++) {
               var path = data.body[i].path.split('|');
-              if (!trucks[path[0]])
+              if (!trucks[path[0]]) {
                 trucks[path[0]] = {
                     name: path[0]
                 };
+                }
               trucks[path[0]][path[1]] = data.body[i].value;
           }
           var keys = Object.keys(trucks);
@@ -38,7 +39,7 @@
               markers[keys[i]] = new google.maps.Marker({
                   position: {
                       lat: trucks[keys[i]].Latitude,
-                      lng: trucks[keys[i]].Longitude,
+                      lng: trucks[keys[i]].Longitude
                   },
                   map: map
               });
@@ -67,28 +68,15 @@
             bounds.extend(markers[keys[i]].getPosition());
         }
         map.fitBounds(bounds);
-
-
       }
-            function initMap() {
+
+      function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.769, lng: -122.446},
           zoom: 8
         });
       }
 
-
-/*
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Hello World!'
-        });
-
-        marker.addListener('click', function() {
-            window.top.postMessage(marker.title, '*');
-        });*/
-      }
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKIiU0ErtJBfYsjuRP4K6J_C2ridwaDwk&callback=initMap"
