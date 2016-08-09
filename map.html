@@ -26,7 +26,7 @@
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8
         });
-        
+
       window.onmessage = function(event) {
           var data = event.data.data;
           for (var i = 0; i < data.body.length; i++) {
@@ -43,8 +43,8 @@
                   position: {
                       lat: trucks[keys[i]].Latitude,
                       lng: trucks[keys[i]].Longitude,
-                      map: map
-                  }
+                  },
+                  map: map
               });
           }
 
