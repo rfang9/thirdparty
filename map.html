@@ -54,7 +54,7 @@
                     window.top.postMessage({ type: 'CHANGE_ELEMENT', payload: innerkey }, '*');
                     innermap.setCenter(innermarker.getPosition());
                   }
-              }(key, map, marker[key]));
+              }(key, map, markers[key]));
 
               markers[key].addListener('mouseover', function(innerkey) {
                   return function() {
