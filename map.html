@@ -20,6 +20,7 @@
     <script>
       var trucks = {}; 
       var markers = {};
+      var info = {};
       var map;
 
       function initMap() {
@@ -47,6 +48,26 @@
                   },
                   map: map
               });
+              
+              info[keys[i]] = new google.maps.InfoWindow({
+                content: '<div><h1>' + keys[i] '</h1></div>'
+              });
+
+              markers[keys[i]].addListener('click', function(event) {
+                  window.top.postMessage({
+                      type: 'CHANGE_ELEMENT',
+                      payload: keys[i]
+                  });
+              });
+              markers[keys[i]].addListener('mouseover', function(event) {
+                  info[keys[i]].open(map, markers[keys[i]]);
+              });
+
+              markers[keys[i]].addListener('mouseout', function(event) {
+                  info[keys[i]].close();
+              });
+
+
           }
 
       }
