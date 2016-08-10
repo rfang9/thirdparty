@@ -12,7 +12,8 @@
                     data.push({
                         key: body[i].path,
                         value: body[i].value,
-                        color: body[i].color
+                        color: body[i].color,
+                        timestamp: body[i].timestamp
                     })
                 }
                 console.dir(data);
@@ -50,13 +51,15 @@
                     .on('mouseover', function(d, i) {
                         d3.select(this).style('fill', 'gold');
                         //showToolTip(' ' + )
+                        var tooltip = ' ' + d.key + '<br>' + d.value + '<br>' + d.timestamp;
+                        showToolTip(message, d.x + d3.mouse(this)[0] + 50, d.y + d3.mouse(this)[1], true);
                     })
                     .on('mousemove', function(d, i) {
-                        // move tooltip
+		                tooltipDivID.css({top:d.y+d3.mouse(this)[1],left:d.x+d3.mouse(this)[0]+50});
                     })
                     .on('mouseout', function() {
                         d3.select(this).style('fill', function(d) { return d.color; })
-                        //hide tooltip
+		                showToolTip(" ",0,0,false);
                     });
             node.append('circle')
                 .attr('r', function(d) { return d.r; });
@@ -66,6 +69,20 @@
                 .style('fill', 'black')
                 .text(function(d) { return d.key; });
         }
+        function showToolTip(pMessage,pX,pY,pShow)
+            {
+            if (typeof(tooltipDivID)=="undefined")
+            {
+                tooltipDivID =$('<div id="messageToolTipDiv" style="position:absolute;display:block;z-index:10000;border:2px solid black;background-color:rgba(0,0,0,0.8);margin:auto;padding:3px 5px 3px 5px;color:white;font-size:12px;font-family:arial;border-radius: 5px;vertical-align: middle;text-align: center;min-width:50px;overflow:auto;"></div>');
+
+                $('body').append(tooltipDivID);
+            }
+            if (!pShow) { tooltipDivID.hide(); return;}
+            //MT.tooltipDivID.empty().append(pMessage);
+            tooltipDivID.html(pMessage);
+            tooltipDivID.css({top:pY,left:pX});
+            tooltipDivID.show();
+            }
 })
     </script>
     <body>
