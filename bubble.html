@@ -5,7 +5,6 @@
         var data = {};
         window.onmessage = function(event) {
             if (event.data && event.data.data && event.data.data.body) {
-                console.dir(event.data.data.body);
                 let body = event.data.data.body;
                 let data = [];
                 for (var i = 0; i < body.length; i++) {
@@ -15,6 +14,7 @@
                         color: body[i].color
                     })
                 }
+                console.log(data);
                 display_pack({ children: data });
             }
         }
