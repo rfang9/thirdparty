@@ -33,7 +33,6 @@
         
         function display_pack(root) {
             console.dir(root);
-            console.dir(svg);
             var svgid = d3.select('#svgid');
             svgid.selectAll("*").remove();
             var svg = d3.select('#svgid').append('svg')
@@ -43,7 +42,7 @@
 
             var node = svg.selectAll('.node')
                 .data(bubble.nodes(root))
-                .append('g')
+            .enter().append('g')
                 .attr('class', 'node')
                 .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')' })
                 .style('fill', function(d) { return d.color; })
@@ -58,7 +57,6 @@
                         d3.select(this).style('fill', function(d) { return d.color; })
                         //hide tooltip
                     });
-            console.dir(node);
             node.append('circle')
                 .attr('r', function(d) { return d.r; });
             node.append('text')
