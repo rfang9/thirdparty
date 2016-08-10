@@ -50,7 +50,7 @@ function draw(value) {
   g.call(gg);  
   
   d3.select(self.frameElement).style("height", "700px");
-  gg.setNeedle(domain[0]+value*(domain[1]-domain[0]));
+  gg.setNeedle(value)//domain[0]+value*(domain[1]-domain[0]));
 }
 </script>
 </body>
