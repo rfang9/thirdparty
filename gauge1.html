@@ -19,7 +19,7 @@
 	
             window.onmessage = function (event) {
                     if (event.data && event.data.data && event.data.data.body && event.data.data.body[0]) {
-                        gauges['gauge1'].placeholderName = event.data.data.body[0].path;
+                        gauges['gauge1'].changelabel(event.data.data.body[0].path);
                         gauges['gauge1'].redraw(event.data.data.body[0].value);
                     }
             }
@@ -122,7 +122,7 @@ function Gauge(placeholderName, configuration)
 		if (undefined != this.config.label)
 		{
 			var fontSize = Math.round(this.config.size / 9);
-			this.body.append("svg:text")
+			this.label = this.body.append("svg:text")
 						.attr("x", this.config.cx)
 						.attr("y", this.config.cy / 2 + fontSize / 2)
 						.attr("dy", fontSize / 2)
@@ -290,6 +290,9 @@ function Gauge(placeholderName, configuration)
 					});
 	}
 	
+    this.changelabel = function (label) {
+        this.label.text(label);
+    }
 	this.valueToDegrees = function(value)
 	{
 		// thanks @closealert
