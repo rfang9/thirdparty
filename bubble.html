@@ -43,8 +43,7 @@
 
             var node = svg.selectAll('.node')
                 .data(bubble.nodes(root))
-                .filter(function(d) { return !d.children; }))
-            .enter().append('g')
+                .append('g')
                 .attr('class', 'node')
                 .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')' })
                 .style('fill', function(d) { return d.color; })
