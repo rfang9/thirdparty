@@ -16,7 +16,8 @@
                     })
                 }
                 console.dir(data);
-                display_pack({ children: data });
+                if (data.length > 0) 
+                    display_pack({ children: data });
             }
         }
 
