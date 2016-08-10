@@ -6,7 +6,16 @@
         window.onmessage = function(event) {
             if (event.data && event.data.data && event.data.data.body) {
                 console.dir(event.data.data.body);
-                display_pack(event.data.data.body);
+                let body = event.data.data.body;
+                let data = [];
+                for (var i = 0; i < body.length, i++) {
+                    data.push({
+                        key: body[i].path,
+                        value: body[i].value,
+                        color: body[i].color
+                    })
+                }
+                display_pack({ children: data });
             }
         }
 
