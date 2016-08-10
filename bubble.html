@@ -34,11 +34,12 @@
         function display_pack(root) {
             console.dir(root);
             console.dir(svg);
-        var svg = d3.select('#svgid').append('svg')
-            .attr('width', diameter)
-            .attr('height', diameter)
-            .attr('class', 'bubble');
-            svg.selectAll(".node").remove();
+            var svgid = d3.select('#svgid');
+            svgid.selectAll("*").remove();
+            var svg = d3.select('#svgid').append('svg')
+                .attr('width', diameter)
+                .attr('height', diameter)
+                .attr('class', 'bubble');
 
             var node = svg.selectAll('.node')
                 .data(bubble.nodes(root))
