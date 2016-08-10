@@ -36,6 +36,7 @@
         
         function display_pack(root) {
             console.dir(root);
+            console.dir(svg);
             var node = svg.selectAll('.node')
                 .data(bubble.nodes(root))
                // .filter(function(d) { return !d.children; }))
