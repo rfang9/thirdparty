@@ -38,7 +38,7 @@ function draw(value) {
   svg.selectAll("*").remove();
   var g = svg.append("g").attr("transform","translate(450,350)");
   var domain = [0,100];
-  console.log(domain[0]+value*(domain[1]-domain[0]));
+  console.log((parseInt(domain[0]) +value*(domain[1]-domain[0])));
   var gg = viz.gg()
 	.domain(domain)
 	.outerRadius(300)
