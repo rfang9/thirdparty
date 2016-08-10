@@ -25,6 +25,7 @@
                 let body = event.data.data.body;
                 let data = [];
                 for (var i = 0; i < body.length; i++) {
+                    if(body[i].value > 0)
                     data.push({
                         key: body[i].path,
                         value: body[i].value,
