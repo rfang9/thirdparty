@@ -65,7 +65,7 @@
                 .style('fill', function(d) { return d.color; })
                     .on('mouseover', function(d, i) {
                         d3.select(this).style('fill', 'gold');
-                        var tooltip = ' ' + d.key + '<br>' + d.value + '<br>' + d.timestamp;
+                        var message = ' ' + d.key + '<br>' + d.value + '<br>' + d.timestamp;
                         showToolTip(message, d.x + d3.mouse(this)[0] + 50, d.y + d3.mouse(this)[1], true);
                     })
                     .on('mousemove', function(d, i) {
@@ -93,7 +93,6 @@
                 }
                 if (!pShow) { tooltipDivID.hide(); return;}
                 //MT.tooltipDivID.empty().append(pMessage);
-        console.log(pMessage);
                 tooltipDivID.html(pMessage);
                 tooltipDivID.css({top:pY,left:pX});
                 tooltipDivID.show();
