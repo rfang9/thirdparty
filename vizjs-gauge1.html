@@ -36,7 +36,7 @@ function draw(value) {
     console.log(value);
   var svg = d3.select("svg");
   svg.selectAll("*").remove();
-  var g = svg.append("g").attr("transform","translate(450,350)");
+  var g = svg.append("g").attr("transform","translate(200,200)");
   var domain = [0,100];
   console.log(domain[0] + ' ' + value*(domain[1]-domain[0]));
   var gg = viz.gg()
