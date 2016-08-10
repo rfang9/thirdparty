@@ -26,12 +26,17 @@
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://cdn.rawgit.com/NPashaP/Viz/master/viz.v1.js"></script>
 <script>
+    var gg;
   window.onmessage = function (event) {
       if (event.data && event.data.data && event.data.data.body) {
-          draw(event.data.data.body[0].value);
+          if (!gg) {
+            draw(event.data.data.body[0].value);
+          } else {
+            gg.setNeedle(event.data.data.body[0].value);
+          }
       }
   }
-
+draw(0);
 function draw(value) {
     console.log(value);
   var svg = d3.select("svg");
@@ -39,7 +44,7 @@ function draw(value) {
   var g = svg.append("g").attr("transform","translate(200,200)");
   var domain = [0,100];
   console.log(domain[0] + ' ' + value*(domain[1]-domain[0]));
-  var gg = viz.gg()
+  gg = viz.gg()
 	.domain(domain)
 	.outerRadius(150)
 	.innerRadius(30)
