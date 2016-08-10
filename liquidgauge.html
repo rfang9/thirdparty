@@ -81,13 +81,14 @@
         config5.displayPercent = false;
         var gauge6 = loadLiquidFillGauge("fillgauge6", 120, config5);
     window.onmessage = function(event) {
-        if (event.data && event.data.data && event.data.data.body) {
-            gauge1.update(event.data.data.body[0].value);
-            gauge2.update(event.data.data.body[0].value);
-            gauge3.update(event.data.data.body[0].value);
-            gauge4.update(event.data.data.body[0].value);
-            gauge5.update(event.data.data.body[0].value);
-            gauge6.update(event.data.data.body[0].value);
+        if (event.data && event.data.data && event.data.data.body && event.data.data.body[0]) {
+            var value = event.data.data.body[0].value;
+            gauge1.update(value);
+            gauge2.update(value);
+            gauge3.update(value);
+            gauge4.update(value);
+            gauge5.update(value);
+            gauge6.update(value);
         }
     }
 function liquidFillGaugeDefaultSettings(){
