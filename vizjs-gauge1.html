@@ -41,7 +41,7 @@ function draw(value) {
   console.log(domain[0] + ' ' + value*(domain[1]-domain[0]));
   var gg = viz.gg()
 	.domain(domain)
-	.outerRadius(300)
+	.outerRadius(150)
 	.innerRadius(30)
 	.value(value)
 	.duration(1000);
@@ -49,7 +49,7 @@ function draw(value) {
   gg.defs(svg);
   g.call(gg);  
   
-  d3.select(self.frameElement).style("height", "700px");
+  d3.select(self.frameElement).style("height", "300px");
   gg.setNeedle(value)//domain[0]+value*(domain[1]-domain[0]));
 }
 </script>
