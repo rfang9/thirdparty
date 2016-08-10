@@ -44,7 +44,7 @@
             .enter().append('g')
                 .attr('class', 'node')
                 .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')' })
-                .style('fill', function(d) { return 'red';})
+                .style('fill', function(d) { return d.color; })
                     .on('mouseover', function(d, i) {
                         d3.select(this).style('fill', 'gold');
                         //showToolTip(' ' + )
@@ -53,7 +53,7 @@
                         // move tooltip
                     })
                     .on('mouseout', function() {
-                        d3.select(this).style('fill', function(d) { return 'red'})
+                        d3.select(this).style('fill', function(d) { return d.color; })
                         //hide tooltip
                     });
             console.dir(node);
@@ -63,7 +63,7 @@
                 .attr('dy', '.3em')
                 .style('text-anchor', 'middle')
                 .style('fill', 'black')
-                .text(function(d) { return 'path'});
+                .text(function(d) { return d.path; });
         }
 })
     </script>
