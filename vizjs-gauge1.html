@@ -33,6 +33,7 @@
   }
 
 function draw(value) {
+    console.log(value);
   var svg = d3.select("svg");
   svg.selectAll("*").remove();
   var g = svg.append("g").attr("transform","translate(450,350)");
