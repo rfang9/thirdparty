@@ -14,7 +14,7 @@
                         color: body[i].color
                     })
                 }
-                console.log(data);
+                console.dir(data);
                 display_pack({ children: data });
             }
         }
@@ -41,7 +41,7 @@
             .enter().append('g')
                 .attr('class', 'node')
                 .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')' })
-                .style('fill', function(d) { console.log(d); return 'red';})
+                .style('fill', function(d) { return 'red';})
                     .on('mouseover', function(d, i) {
                         d3.select(this).style('fill', 'gold');
                         //showToolTip(' ' + )
@@ -53,7 +53,7 @@
                         d3.select(this).style('fill', function(d) { return 'red'})
                         //hide tooltip
                     });
-            
+            console.dir(node);
             node.append('circle')
                 .attr('r', function(d) { return d.r; });
             node.append('text')
