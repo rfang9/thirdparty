@@ -5,13 +5,14 @@
                 document.getElementById('msg'.innerHTML) = JSON.stringify(msg.data);
         }
 
-        window.top.postMessage({
-            type: 'INIT',
-            payload: {
-                datashapes: ['single', 'trend', 'elementlist']
-            }
-        }, '*');
-
+        init() {
+            window.top.postMessage({
+                type: 'INIT',
+                payload: {
+                    datashapes: ['single', 'trend', 'elementlist']
+                }
+            }, '*');
+        }
         function changeTimestamp() {
             window.top.postMessage({
                 type: 'CHANGE_TIME',
@@ -32,7 +33,7 @@
             }, '*');
         }
     </script>
-    <body>
+    <body onload="init()">
         timestamp: <input id="timestamp"></input>
         <button onclick="changeTimestamp()">change timestamp</button>
         <br>
