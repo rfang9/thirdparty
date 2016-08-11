@@ -15,6 +15,12 @@
                     }
                 }, '*');
            // }
+           window.onwheel = function(event) {
+               window.top.postMessage({
+                   type: 'ONWHEEL'
+                   payload: event
+               });
+           }
 
         });
             function changeTimestamp() {
