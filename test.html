@@ -2,47 +2,48 @@
         <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script>
         $(document).ready(function() {
-        window.onmessage = function(msg) {
-            if (msg.data)
-                document.getElementById('msg'.innerHTML) = JSON.stringify(msg.data);
-        }
+            window.onmessage = function(msg) {
+                if (msg.data)
+                    document.getElementById('msg'.innerHTML) = JSON.stringify(msg.data);
+            }
 
-        function init() {
-            window.top.postMessage({
-                type: 'INIT',
-                payload: {
-                    datashapes: ['single', 'trend', 'elementlist']
-                }
-            }, '*');
-        }
+            //function init() {
+                window.top.postMessage({
+                    type: 'INIT',
+                    payload: {
+                        datashapes: ['single', 'trend', 'elementlist']
+                    }
+                }, '*');
+           // }
 
-        function changeTimestamp() {
-            window.top.postMessage({
-                type: 'CHANGE_TIME',
-                payload: document.getElementById('timestamp').value
-            }, '*');
-        }
+        });
+            function changeTimestamp() {
+                window.top.postMessage({
+                    type: 'CHANGE_TIME',
+                    payload: document.getElementById('timestamp').value
+                }, '*');
+            }
 
-        function changeElement() {
-            window.top.postMessage({
-                type: 'CHANGE_ELEMENT',
-                payload: document.getElementById('element').value
-            }, '*');
-        }
+            function changeElement() {
+                window.top.postMessage({
+                    type: 'CHANGE_ELEMENT',
+                    payload: document.getElementById('element').value
+                }, '*');
+            }
 
-        function refreshSymbol() {
-            window.top.postMessage({
-                type: 'REFRESH_SYMBOL'
-            }, '*');
-        }
-    });
+            function refreshSymbol() {
+                window.top.postMessage({
+                    type: 'REFRESH_SYMBOL'
+                }, '*');
+            }
+
     </script>
     <body>
         timestamp: <input id="timestamp"></input>
         <button onclick="changeTimestamp()">change timestamp</button>
         <br>
         element: <input id="element"></input>
-        <button onclick="changeTimestamp()">change timestamp</button>
+        <button onclick="changeElement()">change timestamp</button>
         <br>
         <button onclick="refreshSymbol()">refresh</button>
         <div id="msg"></div>
