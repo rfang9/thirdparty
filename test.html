@@ -37,15 +37,23 @@
                 }, '*');
             }
 
+            function refreshDisplay() {
+                window.top.postMessage({
+                    type: 'REFRESH_DISPLAY'
+                }, '*');
+            }
+
+
     </script>
     <body>
         timestamp: <input id="timestamp"></input>
         <button onclick="changeTimestamp()">change timestamp</button>
         <br>
         element: <input id="element"></input>
-        <button onclick="changeElement()">change timestamp</button>
+        <button onclick="changeElement()">change element</button>
         <br>
-        <button onclick="refreshSymbol()">refresh</button>
+        <button onclick="refreshSymbol()">refresh symbol </button>
+        <button onclick="refreshSymbol()">refresh display </button>
         <div id="msg"></div>
     </body>
 </html>
