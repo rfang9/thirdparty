@@ -4,14 +4,14 @@
         $(document).ready(function() {
             window.onmessage = function(msg) {
                 if (msg.data)
-                    document.getElementById('msg'.innerHTML) = JSON.stringify(msg.data);
+                    document.getElementById('msg').innerHTML = JSON.stringify(msg.data);
             }
 
             //function init() {
                 window.top.postMessage({
                     type: 'INIT',
                     payload: {
-                        datashapes: ['single', 'trend', 'elementlist']
+                        shapes: ['single', 'trend', 'elementlist']
                     }
                 }, '*');
            // }
