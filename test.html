@@ -21,7 +21,7 @@
                console.dir(event);
                window.top.postMessage({
                    type: 'ONWHEEL',
-                   payload: JSON.parse(JSON.stringify(event))
+                   payload: JSON.stringify(event)
                }, '*');
            }
 
