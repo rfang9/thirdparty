@@ -16,6 +16,8 @@
                 }, '*');
            // }
            window.onwheel = function(event) {
+               event.preventDefault();
+               event.stopPropagation();
                window.top.postMessage({
                    type: 'ONWHEEL'
                    payload: event
