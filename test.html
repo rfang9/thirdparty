@@ -1,6 +1,11 @@
 <html>
     <script>
-        window.osi_data = 'single trend table';
+        window.top.postMessage({
+            type: 'INIT',
+            payload: {
+                datashapes: ['single', 'trend', 'elementlist']
+            }
+        }, '*');
     </script>
     <body></body>
 </html>
