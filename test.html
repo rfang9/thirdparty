@@ -18,6 +18,7 @@
            window.onwheel = function(event) {
                event.preventDefault();
                event.stopPropagation();
+               console.dir(event);
                window.top.postMessage({
                    type: 'ONWHEEL',
                    payload: JSON.parse(JSON.stringify(event))
