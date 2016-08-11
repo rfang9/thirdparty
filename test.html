@@ -5,7 +5,7 @@
                 document.getElementById('msg'.innerHTML) = JSON.stringify(msg.data);
         }
 
-        init() {
+        function init() {
             window.top.postMessage({
                 type: 'INIT',
                 payload: {
@@ -13,6 +13,7 @@
                 }
             }, '*');
         }
+
         function changeTimestamp() {
             window.top.postMessage({
                 type: 'CHANGE_TIME',
