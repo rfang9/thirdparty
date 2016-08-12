@@ -26,6 +26,12 @@
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://cdn.rawgit.com/NPashaP/Viz/master/viz.v1.js"></script>
 <script>
+                window.top.postMessage({
+                    type: 'INIT',
+                    payload: {
+                        shapes: ['single']
+                    }
+                }, '*');
     var gg;
   window.onmessage = function (event) {
       if (event.data && event.data.data && event.data.data.body) {

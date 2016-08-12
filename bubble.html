@@ -16,7 +16,12 @@
     <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script>
         $(document).ready(function() {
-            window.top.postMessage('ready', '*');
+                window.top.postMessage({
+                    type: 'INIT',
+                    payload: {
+                        shapes: ['single']
+                    }
+                }, '*');
         var data = {};
         window.onmessage = function(event) {
             if (event.data && event.data.data && event.data.data.body) {

@@ -22,6 +22,12 @@
       var markers = {};
       var info = {};
       var map;
+                window.top.postMessage({
+                    type: 'INIT',
+                    payload: {
+                        shapes: ['single', 'element', 'elementlist']
+                    }
+                }, '*');
 
       window.onmessage = function(event) {
           var data = event.data.data;

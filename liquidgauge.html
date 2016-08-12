@@ -22,7 +22,13 @@
  * All rights reserved.
  *
  * Liquid Fill Gauge v1.1
- */
+ */                window.top.postMessage({
+                    type: 'INIT',
+                    payload: {
+                        shapes: ['single']
+                    }
+                }, '*');
+
 
         var gauge1 = loadLiquidFillGauge("fillgauge1", 55);
         var config1 = liquidFillGaugeDefaultSettings();

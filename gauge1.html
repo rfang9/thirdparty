@@ -16,7 +16,13 @@
 
 		<script>
 			var gauges = [];
-	
+	                window.top.postMessage({
+                    type: 'INIT',
+                    payload: {
+                        shapes: ['single']
+                    }
+                }, '*');
+
             window.onmessage = function (event) {
                     if (event.data && event.data.data && event.data.data.body && event.data.data.body[0]) {
                         gauges['gauge1'].changelabel(event.data.data.body[0].path);
