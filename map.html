@@ -32,13 +32,13 @@
       window.onmessage = function(event) {
           var data = event.data.data;
           for (var i = 0; i < data.body.length; i++) {
-              var path = data.body[i].path.split('|');
+              var path = data[0].body[i].path.split('|');
               if (!trucks[path[0]]) {
                 trucks[path[0]] = {
                     name: path[0]
                 };
                 }
-              trucks[path[0]][path[1]] = data.body[i].value;
+              trucks[path[0]][path[1]] = data[0].body[i].value;
           }
           var keys = Object.keys(trucks);
           for (var i = 0; i < keys.length; i++) {
@@ -87,7 +87,7 @@
             }
             map.fitBounds(bounds);
 
-            map.setCenter(markers[data.element].getPosition());
+            map.setCenter(markers[data[1]].getPosition());
             map.setZoom(6);
       }
 
