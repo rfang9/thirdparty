@@ -31,6 +31,7 @@
 
       window.onmessage = function(event) {
           var data = event.data.data;
+          console.dir(data);
           for (var i = 0; i < data[0].body.length; i++) {
               var path = data[0].body[i].path.split('|');
               if (!trucks[path[0]]) {
