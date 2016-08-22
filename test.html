@@ -8,8 +8,10 @@
                     for (var i = 0; i < document.getElementById('element').options.length; i++) {
                         document.getElementById('element').options.remove(i); 
                     }
-                    for (var i = 0; i < msg.data.data[3].body; i++) {
-                        document.getElementById('element').options.add(msg.data.data[3].body[i]); 
+                    if (msg.data.data && msg.data.data[3]) {
+                        for (var i = 0; i < msg.data.data[3].body; i++) {
+                            document.getElementById('element').options.add(new Option(msg.data.data[3].body[0][i])); 
+                        }
                     }
                 }
             }
