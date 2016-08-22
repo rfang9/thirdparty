@@ -6,7 +6,7 @@
                 if (msg.data) {
                     document.getElementById('msg').innerHTML = JSON.stringify(msg.data);
                     if (msg.data.data && msg.data.data[0]) {
-                        for (var i = 0; i < msg.data.data[0]].body[0].length; i++) {
+                        for (var i = 0; i < msg.data.data[0].body[0].length; i++) {
                             document.getElementById('element').options.add(new Option(msg.data.data[0].body[0][i],i)); 
                         }
                         for (var i = msg.data.data[0].body[0].length; i < document.getElementById('element').options.length; i++) {
