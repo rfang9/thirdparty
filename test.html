@@ -43,10 +43,10 @@
                 }, '*');
             }
 
-            function changeElement(element) {
+            function changeElement(index) {
                 window.top.postMessage({
                     type: 'CHANGE_ELEMENT',
-                    payload: element
+                    payload: document.getElementById('element').options[index]
                 }, '*');
             }
 
