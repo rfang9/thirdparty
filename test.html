@@ -5,11 +5,11 @@
             window.onmessage = function(msg) {
                 if (msg.data) {
                     document.getElementById('msg').innerHTML = JSON.stringify(msg.data);
-                    if (msg.data.data && msg.data.data[3]) {
-                        for (var i = 0; i < msg.data.data[3].body[0].length; i++) {
-                            document.getElementById('element').options.add(new Option(msg.data.data[3].body[0][i],i)); 
+                    if (msg.data.data && msg.data.data[0]) {
+                        for (var i = 0; i < msg.data.data[0]].body[0].length; i++) {
+                            document.getElementById('element').options.add(new Option(msg.data.data[0].body[0][i],i)); 
                         }
-                        for (var i = msg.data.data[3].body[0].length; i < document.getElementById('element').options.length; i++) {
+                        for (var i = msg.data.data[0].body[0].length; i < document.getElementById('element').options.length; i++) {
                             document.getElementById('element').options.remove(i); 
                         }
                     }
@@ -21,7 +21,7 @@
                 window.top.postMessage({
                     type: 'INITIALIZE_SYMBOL',
                     payload: {
-                        shapes: ['summary', 'single', 'trend', 'elementlist']
+                        shapes: ['elementlist', 'summary', 'single', 'trend']
                     }
                 }, '*');
            // }
