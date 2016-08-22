@@ -19,7 +19,7 @@
 
             //function init() {
                 window.top.postMessage({
-                    type: 'INIT',
+                    type: 'INITIALIZE_SYMBOL',
                     payload: {
                         shapes: ['summary', 'single', 'trend', 'elementlist']
                     }
@@ -61,8 +61,6 @@
                     type: 'REFRESH_DISPLAY'
                 }, '*');
             }
-
-
 
     </script>
     <body>
