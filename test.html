@@ -11,7 +11,7 @@
                     console.dir(msg.data.data);
                     if (msg.data.data && msg.data.data[3]) {
                         for (var i = 0; i < msg.data.data[3].body; i++) {
-                            document.getElementById('element').options.add(new Option(msg.data.data[3].body[0][i])); 
+                            document.getElementById('element').options.add(new Option(msg.data.data[3].body[0][i],i)); 
                         }
                     }
                 }
