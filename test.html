@@ -3,8 +3,10 @@
     <script>
         $(document).ready(function() {
             window.onmessage = function(msg) {
-                if (msg.data)
-                    document.getElementById('msg').innerHTML = JSON.stringify(msg.data);
+                if (msg.data) {
+                    $('#msg').innerHTML = JSON.stringify(msg.data);
+                    $('#element').options = msg.data[3].body;
+                }
             }
 
             //function init() {
@@ -33,10 +35,10 @@
                 }, '*');
             }
 
-            function changeElement() {
+            function changeElement(element) {
                 window.top.postMessage({
                     type: 'CHANGE_ELEMENT',
-                    payload: document.getElementById('element').value
+                    payload: element
                 }, '*');
             }
 
@@ -53,13 +55,13 @@
             }
 
 
+
     </script>
     <body>
         timestamp: <input id="timestamp"></input>
         <button onclick="changeTimestamp()">change timestamp</button>
         <br>
-        element: <input id="element"></input>
-        <button onclick="changeElement()">change element</button>
+        element: <select id="element" onchange="changeElement(this.value)"></select>
         <br>
         <button onclick="refreshSymbol()">refresh symbol </button>
         <button onclick="refreshDisplay()">refresh display </button>
