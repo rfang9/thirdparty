@@ -46,7 +46,7 @@
             function changeElement(index) {
                 window.top.postMessage({
                     type: 'CHANGE_ELEMENT',
-                    payload: document.getElementById('element').options[index]
+                    payload: document.getElementById('element').options[index].text
                 }, '*');
             }
 
