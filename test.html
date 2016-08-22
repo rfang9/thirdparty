@@ -4,8 +4,13 @@
         $(document).ready(function() {
             window.onmessage = function(msg) {
                 if (msg.data) {
-                    $('#msg').innerHTML = JSON.stringify(msg.data);
-                    $('#element').options = msg.data.data[3].body;
+                    document.getElementById('msg').innerHTML = JSON.stringify(msg.data);
+                    for (var i = 0; i < document.getElementById('element').options.length; i++) {
+                        document.getElementById('element').options.remove(i); 
+                    }
+                    for (var i = 0; i < msg.data.data[3].body; i++) {
+                        document.getElementById('element').options.add(msg.data.data[3].body[i]); 
+                    }
                 }
             }
 
