@@ -22,16 +22,15 @@
       var markers = {};
       var info = {};
       var map;
-                window.top.postMessage({
-                    type: 'INIT',
-                    payload: {
-                        shapes: ['single', 'element', 'elementlist']
-                    }
-                }, '*');
+      window.top.postMessage({
+          type: 'INIT',
+          payload: {
+              shapes: ['single', 'element', 'elementlist']
+          }
+      }, '*');
 
       window.onmessage = function(event) {
           var data = event.data.data;
-          console.dir(data);
           for (var i = 0; i < data[0].body.length; i++) {
               var path = data[0].body[i].path.split('|');
               if (!trucks[path[0]]) {
@@ -96,6 +95,9 @@
           center: {lat: 37.769, lng: -122.446},
           zoom: 8
         });
+      window.top.postMessage({
+          type: 'ready',
+      }, '*');
       }
 
 
