@@ -21,7 +21,7 @@
                 window.top.postMessage({
                     type: 'INITIALIZE_SYMBOL',
                     payload: {
-                        shapes: ['elementlist', 'summary', 'single', 'trend']
+                            params: [{ shape: 'elementlist' }, { shape: 'summary'}, { shape: 'single' }, { shape: 'trend' }]
                     }
                 }, '*');
            // }
