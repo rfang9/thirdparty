@@ -23,9 +23,9 @@
       var info = {};
       var map;
                 window.top.postMessage({
-                    type: 'INIT',
+                    type: 'INITIALIZE_SYMBOL',
                     payload: {
-                        shapes: ['single', 'element', 'elementlist']
+                      params: [{ shape: 'single' }, { shape: 'element' }, { shape: 'elementlist' }]
                     }
                 }, '*');
 
