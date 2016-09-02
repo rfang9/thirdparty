@@ -58,7 +58,7 @@
 
               markers[key].addListener('click', function(innerkey, innermap, innermarker) {
                   return function() {
-                    window.top.postMessage({ type: 'UPDATE_ER_ELEMENT', payload: innerkey }, '*');
+                    window.top.postMessage({ type: 'SELECT_ER_ELEMENTS', payload: [innerkey] }, '*');
                     innermap.setCenter(innermarker.getPosition());
                   }
               }(key, map, markers[key]));
