@@ -59,7 +59,9 @@
               markers[key].addListener('click', function(innerkey, innermap, innermarker) {
                   return function() {
                     window.top.postMessage({ type: 'SELECT_ER_ELEMENTS', payload: [innerkey] }, '*');
-                    innermap.setCenter(innermarker.getPosition());
+                    //innermap.setCenter(innermarker.getPosition());
+                                        info[innerkey].close();
+
                   }
               }(key, map, markers[key]));
 
