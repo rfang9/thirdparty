@@ -53,7 +53,7 @@
               });
               
               info[key] = new google.maps.InfoWindow({
-                content: '<div><h4>' + key.substring(key.lastIndexOf('\\')+1 + '</h4></div>'
+                content: '<div><h4>' + key.substring(key.lastIndexOf('\\')+1) + '</h4></div>'
               });
 
               markers[key].addListener('click', function(innerkey, innermap, innermarker) {
