@@ -34,11 +34,11 @@
                 }, '*');
     var gg;
   window.onmessage = function (event) {
-      if (event.data && event.data.data && event.data.data.body) {
+      if (event.data && event.data.data && event.data.data[0].body) {
           if (!gg) {
-            draw(event.data.data.body[0].value);
+            draw(event.data.data[0].body[0].value);
           } else {
-            gg.setNeedle(event.data.data.body[0].value);
+            gg.setNeedle(event.data.data[0].body[0].value);
           }
       }
   }

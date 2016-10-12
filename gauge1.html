@@ -24,9 +24,9 @@
                 }, '*');
 
             window.onmessage = function (event) {
-                    if (event.data && event.data.data && event.data.data.body && event.data.data.body[0]) {
-                        gauges['gauge1'].changelabel(event.data.data.body[0].path);
-                        gauges['gauge1'].redraw(event.data.data.body[0].value);
+                    if (event.data && event.data.data && event.data.data[0].body && event.data.data[0].body[0]) {
+                        gauges['gauge1'].changelabel(event.data.data[0].body[0].path);
+                        gauges['gauge1'].redraw(event.data.data[0].body[0].value);
                     }
             }
     

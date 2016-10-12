@@ -26,8 +26,8 @@
         var data = {};
         window.onmessage = function(event) {
             console.log(event);
-            if (event.data && event.data.data && event.data.data.body) {
-                let body = event.data.data.body;
+            if (event.data && event.data.data && event.data.data[0].body) {
+                let body = event.data.data[0].body;
                 let data = [];
                 for (var i = 0; i < body.length; i++) {
                     if(body[i].value > 0)

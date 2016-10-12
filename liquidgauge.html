@@ -96,8 +96,8 @@
         config5.displayPercent = false;
         var gauge6 = loadLiquidFillGauge("fillgauge6", 120, config5);
     window.onmessage = function(event) {
-        if (event.data && event.data.data && event.data.data.body && event.data.data.body[0]) {
-            var value = event.data.data.body[0].value;
+        if (event.data && event.data.data && event.data.data[0].body && event.data.data[0].body[0]) {
+            var value = event.data.data[0].body[0].value;
             gauge1.update(value);
             gauge2.update(value);
             gauge3.update(value);
