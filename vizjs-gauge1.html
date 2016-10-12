@@ -27,9 +27,9 @@
 <script src="https://cdn.rawgit.com/NPashaP/Viz/master/viz.v1.js"></script>
 <script>
                 window.top.postMessage({
-                    type: 'INIT',
+                    type: 'INITIALIZE_SYMBOL',
                     payload: {
-                        shapes: ['single']
+                            params: [{ shape: 'single' }]
                     }
                 }, '*');
     var gg;

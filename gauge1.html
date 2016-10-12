@@ -16,10 +16,10 @@
 
 		<script>
 			var gauges = [];
-	                window.top.postMessage({
-                    type: 'INIT',
+                window.top.postMessage({
+                    type: 'INITIALIZE_SYMBOL',
                     payload: {
-                        shapes: ['single']
+                            params: [{ shape: 'single' }]
                     }
                 }, '*');
 
